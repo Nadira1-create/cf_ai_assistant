@@ -1,0 +1,28 @@
+name = "cf-ai-assistant"
+main = "src/index.ts"
+compatibility_date = "2025-01-01"
+compatibility_flags = ["nodejs_compat"]
+
+# Serve the frontend from /public
+[assets]
+directory = "./public"
+
+# Bind to Workers AI (Llama 3.3)
+[ai]
+binding = "AI"
+
+# Durable Object binding — one instance per user session for persistent memory
+[[durable_objects.bindings]]
+name = "CHAT_AGENT"
+class_name = "ChatAgent"
+
+# Migration required to register the Durable Object class
+[[migrations]]
+tag = "v1"
+new_sqlite_classes = ["ChatAgent"]
+
+# Workflow binding — used for automatic conversation summarization
+[[workflows]]
+name      = "summarize-workflow"
+binding   = "SUMMARIZE_WORKFLOW"
+class_name = "SummarizeWorkflow"
