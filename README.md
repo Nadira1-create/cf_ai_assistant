@@ -31,7 +31,7 @@ Cloudflare Worker (src/index.ts)         ← Router + session management
               └── Workers AI (Llama 3.3) ← LLM used to generate summaries
 ```
 
-### Required Components (all four ticked ✅)
+### Required Components (all four ticked )
 
 | Requirement | Implementation |
 |---|---|
